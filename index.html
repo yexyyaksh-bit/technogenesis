@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechnoGenesis — Field Notes on 2045</title>
+  <meta name="description" content="An interactive editorial monograph exploring how artificial intelligence, biotechnology, soft robotics, and neural interfaces reshape human life by 2045." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090D16' stroke='%232DD4BF' stroke-width='3'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='38' fill='%23F4F0E6'%3E%E2%99%94%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="modal-locked">
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="reading-rule" id="readingRule" aria-hidden="true"></div>
+
+<!-- Entry Chapters Modal -->
+  <div class="captcha-backdrop" id="captchaModal" role="dialog" aria-modal="true" aria-labelledby="captchaTitle">
+    <div class="captcha-card">
+      <div class="captcha-head">
+        <span>FIELD MONOGRAPH · TABLE OF CONTENTS</span>
+        <span>EDITION · 2045</span>
+      </div>
+
+      <h2 id="captchaTitle" class="modal-title">
+        TechnoGenesis
+      </h2>
+      <p class="modal-subtitle">
+        Click any chapter below to preview its central tagline and theme before entering the monograph.
+      </p>
+
+      <div class="modal-chapter-list" id="modalChapterList">
+        <div class="modal-chapter-item active" data-chapter-preview="#threshold">
+          <div class="mc-row">
+            <span class="mc-num">01</span>
+            <strong class="mc-title">The Threshold</strong>
+            <span class="mc-toggle">-</span>
+          </div>
+          <div class="mc-tagline-box">
+            <p class="mc-tagline">“For centuries, tools waited for our hands. Now they share our rooms.”</p>
+            <span class="mc-sub">How technology is shifting from external instruments to a shared living environment.</span>
+            <a href="#threshold" class="mc-go-link" data-chapter-jump>Go to Chapter 01 →</a>
+          </div>
+        </div>
+
+        <div class="modal-chapter-item" data-chapter-preview="#four-forces">
+          <div class="mc-row">
+            <span class="mc-num">02</span>
+            <strong class="mc-title">The Four Forces (AI, Biotech, Robotics, Neural)</strong>
+            <span class="mc-toggle">+</span>
+          </div>
+          <div class="mc-tagline-box">
+            <p class="mc-tagline">“Machines bring millisecond search; only humans bring lived meaning and care.”</p>
+            <span class="mc-sub">Interactive studies on cognitive roles, cellular repair, surgical tremor damping, and mental privacy.</span>
+            <a href="#four-forces" class="mc-go-link" data-chapter-jump>Go to Chapter 02 →</a>
+          </div>
+        </div>
+
+        <div class="modal-chapter-item" data-chapter-preview="#life-2045">
+          <div class="mc-row">
+            <span class="mc-num">03</span>
+            <strong class="mc-title">A Day in October 2045</strong>
+            <span class="mc-toggle">+</span>
+          </div>
+          <div class="mc-tagline-box">
+            <p class="mc-tagline">“The truest sign of a humane future is how effortlessly it lets you turn it off.”</p>
+            <span class="mc-sub">Five grounded hours across India—from morning filter coffee to the brass cutoff switch at night.</span>
+            <a href="#life-2045" class="mc-go-link" data-chapter-jump>Go to Chapter 03 →</a>
+          </div>
+        </div>
+
+        <div class="modal-chapter-item" data-chapter-preview="#human-question">
+          <div class="mc-row">
+            <span class="mc-num">04</span>
+            <strong class="mc-title">The Human Question</strong>
+            <span class="mc-toggle">+</span>
+          </div>
+          <div class="mc-tagline-box">
+            <p class="mc-tagline">“Just because we can build it, should we? Progress is measured by dignity, not speed.”</p>
+            <span class="mc-sub">Six civic questions on governance, equality, cognitive freedom, and the right to live unplugged.</span>
+            <a href="#human-question" class="mc-go-link" data-chapter-jump>Go to Chapter 04 →</a>
+          </div>
+        </div>
+
+        <div class="modal-chapter-item" data-chapter-preview="#build-future">
+          <div class="mc-row">
+            <span class="mc-num">05</span>
+            <strong class="mc-title">Build Your 2045 Charter</strong>
+            <span class="mc-toggle">+</span>
+          </div>
+          <div class="mc-tagline-box">
+            <p class="mc-tagline">“The next world will not simply be invented. It will be decided.”</p>
+            <span class="mc-sub">Balance four civic sliders to compose and print your own single-page 2045 Citizen Broadsheet.</span>
+            <a href="#build-future" class="mc-go-link" data-chapter-jump>Go to Chapter 05 →</a>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" id="enterMonographBtn" class="btn-primary btn-full">
+        START READING FROM OPENING →
+      </button>
+    </div>
+  </div>
+  <!-- Top Navigation -->
+  <header class="site-header" id="top">
+    <div class="wrap nav-row">
+      <a href="#top" class="wordmark">TechnoGenesis</a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#threshold">01. Threshold</a></li>
+          <li><a href="#four-forces">02. Four Forces</a></li>
+          <li><a href="#life-2045">03. Life in 2045</a></li>
+          <li><a href="#human-question">04. Ethics</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-group">
+        <button type="button" class="audio-toggle" id="audioToggle" aria-pressed="true" title="Toggle mechanical switch audio">
+          <span class="audio-dot" id="audioDot"></span>
+          <span id="audioLabel">SFX: ON</span>
+        </button>
+        <a href="#build-future" class="nav-cta">05. Build 2045 →</a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#threshold" class="m-link">01. The Threshold</a>
+      <a href="#four-forces" class="m-link">02. Four Forces</a>
+      <a href="#life-2045" class="m-link">03. Life in 2045</a>
+      <a href="#human-question" class="m-link">04. Human Questions</a>
+      <a href="#build-future" class="m-link text-cyan">05. Build Your Future →</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="heroSection">
+      <div class="chessboard-bg-stage" aria-hidden="true">
+        <div class="blurry-chessboard" id="blurryChessboard"></div>
+      </div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="wrap hero-clean-center">
+        <span class="eyebrow">A FIELD GUIDE TO TOMORROW · SIX CHAPTERS ON 2045</span>
+        <h1 class="h-hero mt-xs">TECHNOGENESIS</h1>
+        <p class="h-hero-sub">The Birth of a New World</p>
+
+        <blockquote class="hero-question">
+          “What happens when technology stops being a tool we pick up and put down, and starts shaping who we are?”
+        </blockquote>
+
+        <p class="body-copy max-w-40">
+          We stand on a shared board of machine intelligence, living biology, physical robotics, and human ethics. The choices we make over the next twenty years will decide how we heal, learn, work, and look after one another.
+        </p>
+
+        <div class="hero-topic-bar" aria-label="Chapters">
+          <a href="#threshold" class="topic-pill">♔ 01. The Threshold</a>
+          <a href="#force-ai" class="topic-pill">♕ 02.A Artificial Intelligence</a>
+          <a href="#force-bio" class="topic-pill">♗ 02.B Biotechnology</a>
+          <a href="#force-robotics" class="topic-pill">♘ 02.C Robotics</a>
+          <a href="#force-hmi" class="topic-pill">♖ 02.D Neural Integration</a>
+          <a href="#life-2045" class="topic-pill">♙ 03. Life in 2045</a>
+          <a href="#human-question" class="topic-pill">♗ 04. Human Ethics</a>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#threshold" class="btn-primary">READ THE MONOGRAPH →</a>
+          <a href="#build-future" class="btn-secondary">COMPOSE YOUR 2045 CHARTER</a>
+        </div>
+      </div>
+
+      <div class="wrap hero-foot">
+        <span>↓ SCROLL TO BEGIN READING</span>
+        <span>KEYS [ 1 – 5 ] SWITCH TIMELINE HOURS IN CHAPTER 03</span>
+      </div>
+    </section>
+
+    <!-- Chapter 01 -->
+    <section class="threshold" id="threshold">
+      <div class="wrap">
+        <div class="threshold-grid">
+          <div>
+            <span class="eyebrow eyebrow--ink">01 · THE THRESHOLD</span>
+            <h2 class="h-section text-ink mt-xs">
+              When tools step off the table.
+            </h2>
+            <p class="handwritten-note mt-md">
+              ✎ Margin note: For centuries, tools waited for our hands. Now they share our rooms.
+            </p>
+          </div>
+
+          <div>
+            <p class="lead-serif text-ink">
+              For almost all of human history, a tool was defined by its distance from the body. A plough, a printing press, a steam engine, or a laptop sat outside us and waited for human hands to put it to work.
+            </p>
+            <div class="essay-columns">
+              <p class="mb-sm">
+                Today, we are crossing a quiet boundary. Technology is moving from an external instrument to a shared environment. Machine learning maps the folding of proteins. Biotechnology uses those maps to repair living cells. Soft robotics brings physical support into clinics and homes, while neural interfaces link computation directly to the nervous system.
+              </p>
+              <p>
+                None of these shifts happen in a vacuum. Together, they challenge our old assumptions about illness, aging, disability, and daily work. Still, the outcome is not written in stone. Good engineering can either rush us or give back our time; it can trap us behind glowing glass or let us stay present with the people in the room.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="threshold-statements">
+          <div class="t-statement">
+            <span class="index-note text-terracotta">I · CO-ADAPTATION</span>
+            <h3>From rigid menus to conversation</h3>
+            <p>Instead of forcing people to think like computers, adaptive tools adjust to the pace of a ten-year-old learning geometry or a grandparent living independently.</p>
+          </div>
+          <div class="t-statement">
+            <span class="index-note text-terracotta">II · CELLULAR PRECISION</span>
+            <h3>From managing pain to molecular repair</h3>
+            <p>Healthcare is steadily shifting from late-stage symptom control toward reading and gently fixing the cellular instructions where disease starts.</p>
+          </div>
+          <div class="t-statement">
+            <span class="index-note text-terracotta">III · QUIET PRESENCE</span>
+            <h3>From glass screens back to physical life</h3>
+            <p>When interfaces move into woven sensors, voice, and tactile materials, software can finally step into the background of everyday life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 02 -->
+    <div id="four-forces">
+
+      <!-- 02.A AI -->
+      <section class="force-ai" id="force-ai">
+        <div class="wrap ai-layout">
+          <div>
+            <span class="eyebrow eyebrow--ink">02.A · ARTIFICIAL INTELLIGENCE</span>
+            <h2 class="h-editorial text-ink section-title-gap">
+              Intelligence, Reimagined
+            </h2>
+            <p class="body-ink-soft mb-md">
+              At its best, machine intelligence is not a substitute for the human mind; it is a telescope for human curiosity. A model can scan a million molecular pathways or monsoon patterns overnight, but it has never scraped its knee, felt accountable to a neighbor, or cared whether a patient is afraid.
+            </p>
+            <p class="meta-footnote">
+              <strong>Real in 2026:</strong> Protein structure prediction, radiology triage, and personalized tutoring.<br/>
+              <strong>Still ahead:</strong> Autonomous scientific discovery and grounded common-sense reasoning.
+            </p>
+            <p class="handwritten-note mt-sm">
+              ↗ Click the ink filters to separate machine speed from human empathy.
+            </p>
+          </div>
+
+          <div class="manuscript-page" id="aiManuscript" data-filter="all">
+            <div class="manuscript-controls">
+              <span class="index-note text-ink">MANUSCRIPT STUDY · FILTER THE COGNITIVE ROLE</span>
+              <div class="filter-btn-group" role="tablist" aria-label="Cognitive Role Filter">
+                <button class="ink-filter-btn active" data-ai-filter="all" role="tab" aria-selected="true" type="button">Both Together</button>
+                <button class="ink-filter-btn" data-ai-filter="machine" role="tab" aria-selected="false" type="button">Machine Search</button>
+                <button class="ink-filter-btn" data-ai-filter="human" role="tab" aria-selected="false" type="button">Human Judgment</button>
+              </div>
+            </div>
+
+            <p class="manuscript-text">
+              “When an unexplained pediatric fever appears in a district clinic, <span class="mark-machine">the diagnostic model cross-references 1.4 million genomic papers and enzyme pathways in eleven seconds</span>, narrowing the cause to two rare variations. Then <span class="mark-human">the doctor sits down unhurried with the child’s parents, listens to their worries, weighs the physical toll of treatment, and chooses the gentler care path</span>. In the classroom next door, <span class="mark-machine">an adaptive companion turns a geometry proof into visual rhythm blocks for a student with dyslexia</span>, while <span class="mark-human">the teacher notices a quiet child sitting alone and invites her into the group experiment</span>.”
+            </p>
+
+            <div class="manuscript-legend">
+              <span><strong class="text-sky">Blue underline:</strong> High-speed pattern search &amp; translation</span>
+              <span><strong class="text-coral">Coral underline:</strong> Empathy, ethics &amp; human responsibility</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02.B Biotech -->
+      <section class="force-bio" id="force-bio">
+        <div class="wrap">
+          <div class="bio-header-row">
+            <div>
+              <span class="eyebrow">02.B · BIOTECHNOLOGY</span>
+              <h2 class="h-editorial mt-xs">Life, Rewritten</h2>
+            </div>
+            <p class="body-copy">
+              Biology is the oldest builder on Earth, growing forests and mending skin at room temperature. As gene editing and synthetic biology mature, medicine is learning to read and repair cellular code. Select a field below to compare clinical reality in 2026 with the long-term research horizon.
+            </p>
+          </div>
+
+          <div class="specimen-selector" role="tablist" aria-label="Biotechnology Domains">
+            <button class="spec-tab active" data-bio-tab="genetic" role="tab" aria-selected="true" type="button">01. Genetic &amp; Cellular Medicine</button>
+            <button class="spec-tab" data-bio-tab="regenerative" role="tab" aria-selected="false" type="button">02. Tissue &amp; Organ Repair</button>
+            <button class="spec-tab" data-bio-tab="ecological" role="tab" aria-selected="false" type="button">03. Synthetic Biomanufacturing</button>
+          </div>
+
+          <div class="curtain-comparer" id="bioComparer" aria-live="polite">
+            <div class="curtain-side curtain-today">
+              <div>
+                <span class="eyebrow mb-xs">● IN CLINICS TODAY (2026)</span>
+                <h3 class="h-editorial card-subhead" id="bioTodayTitle">
+                  Single-Gene Blood Cures &amp; Targeted mRNA Care
+                </h3>
+                <p class="body-copy" id="bioTodayBody">
+                  Approved CRISPR therapies are already curing inherited sickle-cell disease and beta-thalassemia in hospital patients, while programmable mRNA vaccines and CAR-T therapies train a patient’s own immune cells to clear specific blood cancers.
+                </p>
+              </div>
+              <span class="index-note text-cyan mt-lg">VERIFIED CLINICAL REALITY · 2026</span>
+            </div>
+
+            <div class="curtain-side curtain-speculative">
+              <div>
+                <span class="eyebrow eyebrow--coral mb-xs">◌ LONG-TERM HORIZON (2045)</span>
+                <h3 class="h-editorial card-subhead" id="bioFutureTitle">
+                  Safe Polygenic Editing &amp; Pre-Symptom Reversal
+                </h3>
+                <p class="body-copy" id="bioFutureBody">
+                  Treating complex conditions shaped by dozens of interacting genes, such as Alzheimer’s or systemic cellular aging, remains in early lab research and requires decades of long-term safety proof before routine use.
+                </p>
+              </div>
+              <span class="index-note text-coral mt-lg">SPECULATIVE RESEARCH HORIZON</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02.C Robotics -->
+      <section class="force-robotics" id="force-robotics">
+        <div class="wrap">
+          <div class="robotics-top">
+            <div>
+              <span class="eyebrow eyebrow--ink">02.C · ROBOTICS</span>
+              <h2 class="h-editorial text-ink section-title-gap">
+                Intelligence in Motion
+              </h2>
+              <p class="body-ink-soft mb-md">
+                Forget the movie cliché of cold metal armies. The most useful machines of the next twenty years are soft, compliant, and built to work alongside people: steadying a micro-surgeon’s fingers, helping an older adult climb stairs, or wading into a flooded substation so human crews stay safe.
+              </p>
+              <p class="meta-footnote-plain">
+                <strong>Still speculative:</strong> General-purpose home robots capable of safe, unscripted physical care in cluttered family rooms.
+              </p>
+              <p class="handwritten-note mt-sm">
+                ☞ Drag across the surgical pad on the right to see live surgeon biometrics &amp; robotic stabilization!
+              </p>
+            </div>
+
+            <div class="tremor-studio">
+              <div class="flex-between-wrap">
+                <span class="index-note text-ink">LIVE BIOMETRIC TEST · DRAW A CURVE ACROSS THE SURGICAL PAD</span>
+                <button id="clearPadBtn" type="button" class="index-note link-terracotta">Reset Pad</button>
+              </div>
+
+              <canvas id="tremorPad" width="520" height="185" aria-label="Interactive surgical tremor damping canvas"></canvas>
+
+              <div class="tremor-analytics-panel" aria-live="polite">
+                <div class="tremor-analytics-header">
+                  <span><span class="tremor-status-dot" id="tremorDot"></span><span id="tremorStateText">READY · DRAG CURSOR TO READ SURGEON BIOMETRICS</span></span>
+                  <span id="tremorSampleCount">HR: 72 BPM</span>
+                </div>
+
+                <div class="tremor-metrics-grid">
+                  <div class="tremor-metric-box">
+                    <span class="tm-label">Stress Level</span>
+                    <span class="tm-val" id="statStress">Calm (0%)</span>
+                  </div>
+                  <div class="tremor-metric-box">
+                    <span class="tm-label">Muscle Fatigue</span>
+                    <span class="tm-val" id="statFatigue">Low (0%)</span>
+                  </div>
+                  <div class="tremor-metric-box">
+                    <span class="tm-label">Cognitive Load</span>
+                    <span class="tm-val accent" id="statCog">—</span>
+                  </div>
+                  <div class="tremor-metric-box">
+                    <span class="tm-label">Assisted Precision</span>
+                    <span class="tm-val accent" id="statScore">—</span>
+                    <div class="tm-bar-track">
+                      <div class="tm-bar-fill" id="statBar"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="pad-caption">
+                <strong>How it works:</strong> As the surgeon’s <span class="text-muted-grey">fatigue and stress (faint grey line)</span> rise during a long procedure, the robotic wrist senses micro-tension and <span class="text-terracotta-bold">steadies the incision (terracotta line)</span> so cognitive load stays low.
+              </p>
+            </div>
+          </div>
+
+          <div class="robotics-ledger">
+            <div class="r-col">
+              <span class="index-note text-terracotta">01 · OPERATING ROOMS</span>
+              <h3 class="ledger-title">Micro-Surgical Wrists</h3>
+              <p class="ledger-copy">Scales down a surgeon’s hand motion ten-to-one so delicate pediatric heart and retinal repairs can be performed with complete stillness.</p>
+            </div>
+            <div class="r-col">
+              <span class="index-note text-terracotta">02 · REHABILITATION</span>
+              <h3 class="ledger-title">Woven Mobility Exosuits</h3>
+              <p class="ledger-copy">Soft fabric tendons worn under everyday clothes sense the millisecond a stroke survivor steps forward, adding gentle ankle and hip lift.</p>
+            </div>
+            <div class="r-col">
+              <span class="index-note text-terracotta">03 · DISASTER RESPONSE</span>
+              <h3 class="ledger-title">Hazard &amp; Coastal Rovers</h3>
+              <p class="ledger-copy">Legged and amphibious field machines inspect chemical leaks, collapsed tunnels, and subsea cables while human teams guide strategy from safety.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02.D Neural -->
+      <section class="force-hmi" id="force-hmi">
+        <div class="wrap hmi-split">
+          <div>
+            <span class="eyebrow">02.D · HUMAN–MACHINE INTEGRATION</span>
+            <h2 class="h-editorial section-title-gap">
+              Beyond the Screen
+            </h2>
+            <p class="body-copy mb-md">
+              The real test of human-machine integration is how much dignity it restores. Cochlear implants, bionic hands that return the feeling of warmth and grip to amputees, and clinical neural decoders that help paralyzed patients speak all begin with accessibility.
+            </p>
+            <p class="body-copy">
+              But when sensors touch the nervous system, mental privacy becomes sacred. Flip the two brass hardware switches on the right to see how on-device safeguards protect a patient’s unspoken thoughts.
+            </p>
+          </div>
+
+          <div class="privacy-chamber">
+            <span class="index-note text-cyan">NEURAL SPEECH DECODER · INNER MONOLOGUE VS. SPOKEN INTENT</span>
+
+            <div class="monologue-box" aria-live="polite">
+              “<span class="private-thought" id="priv1">I’m exhausted and worried about how much this hospital stay is costing our family...</span> <span class="spoken-intent">Thank you for coming to visit, Ananya. Could you open the window a little?</span> <span class="private-thought" id="priv2">I hope my synthesized voice doesn’t sound too strange to her.</span>”
+            </div>
+
+            <p id="hmiExplanation" class="hmi-status-note">
+              <strong>Safeguards active:</strong> The decoder outputs only the words the patient consciously intends to speak (<span class="text-cyan">underlined</span>). Unspoken private thoughts stay redacted and unrecorded.
+            </p>
+
+            <div class="brass-switches">
+              <button class="switch-bar on" data-hmi-switch="intent" aria-pressed="true" type="button">
+                <span>1. Motor-Speech Intent Filter (Ignore Unspoken Thoughts)</span>
+                <span class="index-note switch-state text-cyan">ON</span>
+              </button>
+              <button class="switch-bar on" data-hmi-switch="local" aria-pressed="true" type="button">
+                <span>2. Strictly On-Device Processing (Zero Cloud Upload)</span>
+                <span class="index-note switch-state text-cyan">ON</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Chapter 03 -->
+    <section class="day2045" id="life-2045">
+      <div class="wrap">
+        <div class="day2045-header">
+          <div>
+            <span class="eyebrow eyebrow--coral">03 · A DAY IN OCTOBER 2045 · GROUNDED SCENARIOS</span>
+            <h2 class="h-section mt-xs">
+              “A day in a life that has not happened yet.”
+            </h2>
+          </div>
+          <p class="body-copy max-w-29">
+            Thoughtful vignettes, not prophecies. Click an hour below (or press keys <strong>1–5</strong>) to walk through an ordinary Tuesday in October 2045.
+          </p>
+        </div>
+
+        <div class="chronicle-index" role="tablist" aria-label="2045 Timeline">
+          <button class="chronicle-btn active" data-hour="07:00" role="tab" aria-selected="true" type="button">
+            <span class="chronicle-hour">07:00</span>
+            <span class="chronicle-label">The Morning Veranda</span>
+          </button>
+          <button class="chronicle-btn" data-hour="09:30" role="tab" aria-selected="false" type="button">
+            <span class="chronicle-hour">09:30</span>
+            <span class="chronicle-label">The Neighborhood Shala</span>
+          </button>
+          <button class="chronicle-btn" data-hour="12:00" role="tab" aria-selected="false" type="button">
+            <span class="chronicle-hour">12:00</span>
+            <span class="chronicle-label">The Community Clinic</span>
+          </button>
+          <button class="chronicle-btn" data-hour="15:30" role="tab" aria-selected="false" type="button">
+            <span class="chronicle-hour">15:30</span>
+            <span class="chronicle-label">The Mangrove Estuary</span>
+          </button>
+          <button class="chronicle-btn" data-hour="20:00" role="tab" aria-selected="false" type="button">
+            <span class="chronicle-hour">20:00</span>
+            <span class="chronicle-label">The Brass Cutoff Switch</span>
+          </button>
+        </div>
+
+        <div class="chronicle-stage" id="chronicleStage" aria-live="polite">
+          <div>
+            <span class="index-note text-coral" id="cMeta">07:00 AM · RAGHAV’S VERANDA · IMAGINED SCENARIO · 2045</span>
+            <h3 class="h-editorial section-title-gap" id="cTitle">
+              A Home That Adapts Without Watching
+            </h3>
+            <p class="lead-serif text-ivory mb-lg" id="cStory">
+              At seventy-four, Raghav wakes to warm October sunlight across his lime-plaster wall. Humid mornings make his left knee stiff, and the terracotta floor tiles notice his slower step using simple pressure sensors; there isn’t a single camera in the house. In the kitchen, the counter quietly lowers two inches while the decoction brews, and a soft woven band on his wrist steadies his hand just enough to pour hot filter coffee into his favorite brass tumbler.
+            </p>
+            <p class="chronicle-aside" id="cDetail">
+              Raghav still grinds his Chikmagalur coffee beans by hand in a forty-year-old brass mill. The home removes the physical frustration of aging while leaving the morning rituals he loves untouched.
+            </p>
+          </div>
+
+          <figure class="specimen-frame">
+            <div class="specimen-hud-top">
+              <span id="cPlateId">PLATE 01 · HABITAT-IND</span>
+              <span id="cTelemetry">CAMERAS: 0 · LOCAL SENSORS ONLY</span>
+            </div>
+            <div class="specimen-img-wrap">
+              <img
+                id="cImage"
+                src="assets/img/0700-kitchen.jpg"
+                alt="Warm morning coffee cup in Raghav's tactile kitchen"
+                class="chronicle-img"
+              />
+              <div class="specimen-crosshair" aria-hidden="true"></div>
+            </div>
+            <figcaption class="specimen-caption">
+              <span>ARCHIVAL FIELD VISUALIZATION</span>
+              <span id="cCoords">LAT 12.97° N · 77.59° E · 07:00 IST</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 04 -->
+    <section class="human-question" id="human-question">
+      <div class="wrap">
+        <div class="max-w-48">
+          <span class="eyebrow eyebrow--ink">04 · THE HUMAN QUESTION</span>
+          <h2 class="h-section text-ink section-title-gap">
+            “Just because we can build it, should we?”
+          </h2>
+          <p class="question-intro">
+            Every technical leap magnifies both human generosity and human shortsightedness. A society worthy of 2045 cannot measure progress by speed alone; it has to ask who is protected, who is included, and who gets to decide.
+          </p>
+        </div>
+
+        <div class="q-table">
+          <div class="q-row"><span class="index-note text-terracotta">01</span><h3>Who governs intelligent systems?</h3><p>When software helps run classrooms, hospitals, and public infrastructure, how do we keep those systems answerable to citizens rather than a few private boards?</p></div>
+          <div class="q-row"><span class="index-note text-terracotta">02</span><h3>Who shares in the dividend?</h3><p>Will cellular medicine and clean automation narrow inequality, or widen the gap between those who can buy longevity and those left waiting?</p></div>
+          <div class="q-row"><span class="index-note text-terracotta">03</span><h3>Where is the boundary of the mind?</h3><p>How do we draw an unbreakable legal and hardware line around our unspoken thoughts and biological data so they can never be monetized?</p></div>
+          <div class="q-row"><span class="index-note text-terracotta">04</span><h3>How do we honor human care?</h3><p>In an age of tireless machines, how do we value nursing, teaching, craft, and parenthood over raw algorithmic output?</p></div>
+          <div class="q-row"><span class="index-note text-terracotta">05</span><h3>Can you still choose to live unplugged?</h3><p>How do we co-design assistive tools with disabled communities from day one, while guaranteeing everyone’s right to step away from screens without penalty?</p></div>
+          <div class="q-row"><span class="index-note text-terracotta">06</span><h3>What humility do we owe 2100?</h3><p>When editing ecological or genetic code, what containment locks and safeguards do we owe the grandchildren who will inherit the biosphere?</p></div>
+        </div>
+
+        <div class="principle-ledger">
+          <span class="index-note text-terracotta">CIVIC COMPASS · SELECT THE FIRST PRINCIPLE</span>
+          <h3 class="h-editorial text-ink mt-xxs">
+            Which value should carry the greatest weight when hard trade-offs are made?
+          </h3>
+
+          <div class="principle-tabs" role="tablist" aria-label="Guiding Ethical Principles">
+            <button class="p-tab active" data-p="dignity" role="tab" aria-selected="true" type="button">Dignity</button>
+            <button class="p-tab" data-p="freedom" role="tab" aria-selected="false" type="button">Cognitive Freedom</button>
+            <button class="p-tab" data-p="fairness" role="tab" aria-selected="false" type="button">Universal Access</button>
+            <button class="p-tab" data-p="sustainability" role="tab" aria-selected="false" type="button">Biosphere Repair</button>
+            <button class="p-tab" data-p="opportunity" role="tab" aria-selected="false" type="button">Shared Time</button>
+          </div>
+
+          <div class="principle-output" id="principleOutput" aria-live="polite">
+            <h4 id="pHead" class="principle-head">
+              Machines handle the heavy lifting so people have unhurried time for care.
+            </h4>
+            <p id="pBody" class="principle-body">
+              Putting Dignity first means we refuse to use algorithms to turn nurses, teachers, or logistics workers into timed cogs. Hospital rovers move heavy supply carts so nurses can sit unhurried beside frightened patients, and every high-stakes medical or legal choice requires human accountability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 05 -->
+    <section class="future-composer" id="build-future">
+      <div class="wrap">
+        <span class="eyebrow">05 · BUILD YOUR FUTURE</span>
+        <h2 class="h-section section-title-gap">
+          “The future is not fixed. What would you build?”
+        </h2>
+        <p class="body-copy max-w-42">
+          Tune the four civic priorities on the left to typeset your own 2045 Charter Broadsheet on the right. When you are ready, stamp your edition to print it or copy your charter code.
+        </p>
+
+        <div class="composer-layout">
+          <div>
+            <div class="weight-row">
+              <div class="weight-head"><label for="wIntel">Scientific Discovery</label><span class="index-note text-cyan" id="nIntel">75</span></div>
+              <input type="range" id="wIntel" class="brass-range" min="15" max="100" value="75" />
+            </div>
+            <div class="weight-row">
+              <div class="weight-head"><label for="wWell">Public Health &amp; Care</label><span class="index-note text-cyan" id="nWell">85</span></div>
+              <input type="range" id="wWell" class="brass-range" min="15" max="100" value="85" />
+            </div>
+            <div class="weight-row">
+              <div class="weight-head"><label for="wEarth">Ecological Repair</label><span class="index-note text-cyan" id="nEarth">80</span></div>
+              <input type="range" id="wEarth" class="brass-range" min="15" max="100" value="80" />
+            </div>
+            <div class="weight-row">
+              <div class="weight-head"><label for="wBond">Human Connection &amp; Craft</label><span class="index-note text-cyan" id="nBond">90</span></div>
+              <input type="range" id="wBond" class="brass-range" min="15" max="100" value="90" />
+            </div>
+
+            <div class="preset-group">
+              <button class="btn-secondary btn-preset" data-preset="80,85,85,90" type="button">Balanced</button>
+              <button class="btn-secondary btn-preset" data-preset="98,65,60,50" type="button">Deep Science</button>
+              <button class="btn-secondary btn-preset" data-preset="60,90,98,85" type="button">Living Earth</button>
+              <button class="btn-secondary btn-preset" data-preset="50,85,75,98" type="button">Unhurried Commons</button>
+            </div>
+
+            <div class="composer-actions">
+              <div class="action-btn-pair">
+                <button type="button" id="stampBroadsheetBtn" class="btn-primary">
+                  ✦ STAMP &amp; PRINT EDITION
+                </button>
+                <button type="button" id="copyCharterBtn" class="btn-secondary">
+                  ⎘ COPY CHARTER
+                </button>
+              </div>
+              <p class="index-note text-silver mt-xs" id="stampFeedback" aria-live="polite">
+                Stamps your unique citizen hash &amp; formats the broadsheet for clean printing.
+              </p>
+            </div>
+          </div>
+
+          <div class="broadsheet-page" id="broadsheetPage" aria-live="polite">
+            <div class="broadsheet-header">
+              <span id="bEdition">COMPOSED EDITION · BALANCED PRIORITIES</span>
+              <span id="bSeal">SEAL #TG-2045-7585</span>
+            </div>
+
+            <h3 class="h-editorial text-ink mb-xs" id="bTitle">
+              A Quietly Capable Commonwealth
+            </h3>
+
+            <p class="lead-serif text-ink-soft" id="bDesc">
+              You have imagined a world where advanced science and cellular medicine work quietly beneath a warm, unhurried public life. Technology is judged not by spectacle, but by how many healthy years and quiet evenings it returns to families and neighborhoods.
+            </p>
+
+            <div class="proportion-bar" aria-label="Proportional balance of the four priorities">
+              <div class="prop-seg-1" id="seg1" title="Scientific Discovery"></div>
+              <div class="prop-seg-2" id="seg2" title="Public Health & Care"></div>
+              <div class="prop-seg-3" id="seg3" title="Ecological Repair"></div>
+              <div class="prop-seg-4" id="seg4" title="Human Connection & Craft"></div>
+            </div>
+
+            <div class="proportion-legend">
+              <span><i class="dot-intel"></i> Discovery</span>
+              <span><i class="dot-well"></i> Care</span>
+              <span><i class="dot-earth"></i> Ecology</span>
+              <span><i class="dot-bond"></i> Connection</span>
+            </div>
+
+            <p id="bTech" class="broadsheet-tech">
+              <strong>Primary technologies:</strong> Co-reasoning scientific AI, preventative cellular diagnostics, enzymatic recycling, and hardware privacy switches.
+            </p>
+
+            <div class="broadsheet-cols">
+              <div>
+                <span class="index-note text-terracotta">ETHICAL QUESTION TO GUARD</span>
+                <p id="bEthics" class="broadsheet-col-copy">
+                  Making sure that preventative health sensors and helpful ambient systems never turn into subtle pressure to optimize every quiet hour of private life.
+                </p>
+              </div>
+              <div>
+                <span class="index-note text-ink">ONE CONCRETE ACTION TODAY</span>
+                <p id="bAction" class="broadsheet-col-copy">
+                  Fund open-source medical research, pass strict on-device privacy laws for wearables, and protect screen-free neighborhood gathering spaces.
+                </p>
+              </div>
+            </div>
+
+            <div class="broadsheet-stamp" id="broadsheetStamp" aria-hidden="true">
+              <span>VERIFIED CITIZEN CHARTER</span>
+              <strong id="stampHash">2045 · AUTHENTICATED</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 06 -->
+    <section class="closing">
+      <div class="wrap max-w-50">
+        <span class="eyebrow">06 · THE NEXT CHAPTER</span>
+        <h2 class="h-section closing-title">
+          “The next world will not simply be invented. It will be decided.”
+        </h2>
+        <p class="body-copy mb-xl">
+          The future is shaped in ordinary rooms: in the safeguards an engineer refuses to skip, the curiosity a teacher sparks in a school lab, the fair access a town demands for its clinic, and the attention we give one another when we set our devices down.
+        </p>
+        <div class="hero-actions">
+          <a href="#build-future" class="btn-primary">COMPOSE YOUR 2045 CHARTER →</a>
+          <a href="#top" class="btn-secondary">BACK TO OPENING ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong class="footer-brand">TechnoGenesis: The Birth of a New World</strong>
+        <p class="footer-sub">An interactive field guide to intelligence, biology, physical machines, and human dignity.</p>
+      </div>
+
+      <div class="footer-colophon">
+        <span class="index-note text-cyan">COLOPHON &amp; CRAFT</span>
+        <p>
+          Crafted from scratch with vanilla HTML, CSS, and JavaScript—no external frameworks. Features a live HTML5 Canvas surgical biometrics pad, synthesized mechanical switch audio, and a printable citizen charter. Typeset in <em>Newsreader</em>, <em>Plus Jakarta Sans</em>, and <em>IBM Plex Mono</em>.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#threshold">01. Threshold</a>
+        <a href="#four-forces">02. Four Forces</a>
+        <a href="#life-2045">03. Life in 2045</a>
+        <a href="#human-question">04. Ethics</a>
+        <a href="#build-future">05. Build 2045</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
